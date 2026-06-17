@@ -46,7 +46,8 @@ public class FerramentaRepository {
         }
         return ferramenta;
     }
-    public void register(Ferramenta tool){
+    public int register(Ferramenta tool){
+        int linhas = 0;
         try{
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -56,15 +57,17 @@ public class FerramentaRepository {
             stmt.setInt(2, tool.getHorasDeUso());
             stmt.setInt(3, tool.getVidaUtilMaxima());
             
-            int linhasAfetadas = stmt.executeUpdate();
-            if (linhasAfetadas == 0) {
+            linhas = stmt.executeUpdate();
+            if (linhas == 0) {
                 throw new SQLException("Falha na atualização: Nenhuma linha foi afetada.");
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
+        return linhas;
     }
-    public void deletar(Long id){
+    public int deletar(Long id){
+        int linhas = 0;
         try{
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -72,15 +75,17 @@ public class FerramentaRepository {
             stmt = conn.prepareStatement("DELETE FROM equipamento WHERE id = ?");
             stmt.setLong(1, id);
                 
-            int linhasAfetadas = stmt.executeUpdate();
-            if (linhasAfetadas == 0) {
+             linhas = stmt.executeUpdate();
+            if (linhas == 0) {
                 throw new SQLException("Falha na atualização: Nenhuma linha foi afetada.");
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
+        return linhas;
     }
-    public void Salvar(Ferramenta ferramenta){
+    public int Salvar(Ferramenta ferramenta){
+        int linhas = 0;
         try{
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -94,11 +99,15 @@ public class FerramentaRepository {
                 stmt.setInt(4, ferramenta.getId());
                 
                 
-                 stmt.executeUpdate();
+                 linhas = stmt.executeUpdate();
+                 if (linhas == 0) {
+                throw new SQLException("Falha na atualização: Nenhuma linha foi afetada.");
+            }
             
     }catch (SQLException e){
            e.printStackTrace();
         }
+        return linhas;
 }
     public Ferramenta buscarPorId(Long id){
     Ferramenta ferramenta = null;

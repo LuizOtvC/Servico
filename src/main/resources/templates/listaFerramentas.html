@@ -37,6 +37,7 @@
         <td th:text="${lista.horasDeUso}"></td>
         <td th:text="${lista.vidaUtilMaxima}"></td>
         <td style="min-width: 160px;">
+            <td th:replace="~{fragmentos/componentes :: barraDesgaste(f=${lista})}"></td>
             <a th:href="@{/editar/{id}(id=${lista.id})}" class="btn btn-warning btn-sm me-1">Editar</a>
             <a th:href="@{/deletar/{id}(id=${lista.id})}" class="btn btn-danger btn-sm">Excluir</a>
         </td>

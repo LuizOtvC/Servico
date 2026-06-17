@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="cardFerramenta(f)" class="card shadow-sm h-100">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${f.nome}">Nome da Ferramenta</h5>
+
+        <p class="card-text text-muted mb-2">
+            <small>
+                Horas de uso: <span th:text="${f.horasDeUso}">0</span> /
+                Vida útil máxima: <span th:text="${f.vidaUtilMaxima}">0</span> h
+            </small>
+        </p>
+
+        <div class="progress" style="height: 20px;">
+            <div class="progress-bar"
+                 role="progressbar"
+                 th:style="'width: ' + ${f.percentualDesgaste} + '%'"
+                 th:classappend="${f.percentualDesgaste} > 80 ? 'bg-success'
+                                  : (${f.percentualDesgaste} > 50 ? 'bg-warning' : 'bg-danger')"
+                 th:aria-valuenow="${f.percentualDesgaste}"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+                <span th:text="${#numbers.formatDecimal(f.percentualDesgaste, 1, 1)} + '%'">0%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="barraDesgaste(f)" class="progress" style="height: 20px; min-width: 120px;">
+    <div class="progress-bar"
+         role="progressbar"
+         th:style="'width: ' + ${f.percentualDesgaste} + '%'"
+         th:classappend="${f.percentualDesgaste} > 80 ? 'bg-success'
+                          : (${f.percentualDesgaste} > 50 ? 'bg-warning' : 'bg-danger')"
+         th:aria-valuenow="${f.percentualDesgaste}"
+         aria-valuemin="0"
+         aria-valuemax="100">
+        <span th:text="${#numbers.formatDecimal(f.percentualDesgaste, 1, 1)} + '%'">0%</span>
+    </div>
+</div>
+
+</body>
+</html>

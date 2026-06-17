@@ -57,7 +57,12 @@ public class Ferramenta {
         this.vidaUtilMaxima = vidaUtilMaxima;
     }
     
-    
+    public double getPercentualDesgaste() {
+    if (vidaUtilMaxima == 0) {
+        return 0;
+    }
+    return (double) horasDeUso / vidaUtilMaxima * 100;
+}
     
 
 }
