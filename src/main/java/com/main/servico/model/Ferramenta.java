@@ -4,32 +4,40 @@
  */
 package com.main.servico.model;
 
+import java.math.BigInteger;
+
 /**
  *
  * @author Aluno
  */
 public class Ferramenta {
     
-    private int id;
+    private Long id;
     private String nome;
-    private int horasDeUso;
-    private int vidaUtilMaxima;
+    private Integer horasDeUso;
+    private Integer vidaUtilMaxima;
+    private String status;
+    private Long idGalpao;
+    private Long idUsuarioResponsavel;
 
     public Ferramenta() {
     }
 
-    public Ferramenta(int id, String nome, int horasDeUso, int vidaUtilMaxima) {
+    public Ferramenta(Long id, String nome, Integer horasDeUso, Integer vidaUtilMaxima, String status, Long idGalpao, Long idUsuarioResponsavel) {
         this.id = id;
         this.nome = nome;
         this.horasDeUso = horasDeUso;
         this.vidaUtilMaxima = vidaUtilMaxima;
+        this.status = status;
+        this.idGalpao = idGalpao;
+        this.idUsuarioResponsavel = idUsuarioResponsavel;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,28 +49,45 @@ public class Ferramenta {
         this.nome = nome;
     }
 
-    public int getHorasDeUso() {
+    public Integer getHorasDeUso() {
         return horasDeUso;
     }
 
-    public void setHorasDeUso(int horasDeUso) {
+    public void setHorasDeUso(Integer horasDeUso) {
         this.horasDeUso = horasDeUso;
     }
 
-    public int getVidaUtilMaxima() {
+    public Integer getVidaUtilMaxima() {
         return vidaUtilMaxima;
     }
 
-    public void setVidaUtilMaxima(int vidaUtilMaxima) {
+    public void setVidaUtilMaxima(Integer vidaUtilMaxima) {
         this.vidaUtilMaxima = vidaUtilMaxima;
     }
-    
-    public double getPercentualDesgaste() {
-    if (vidaUtilMaxima == 0) {
-        return 0;
-    }
-    return (double) horasDeUso / vidaUtilMaxima * 100;
-}
-    
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Long getIdGalpao() {
+        return idGalpao;
+    }
+
+    public void setIdGalpao(Long idGalpao) {
+        this.idGalpao = idGalpao;
+    }
+
+    public Long getIdUsuarioResponsavel() {
+        return idUsuarioResponsavel;
+    }
+
+    public void setIdUsuarioResponsavel(Long idUsuarioResponsavel) {
+        this.idUsuarioResponsavel = idUsuarioResponsavel;
+    }
+
+    
 }

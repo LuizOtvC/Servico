@@ -33,7 +33,7 @@ public class FerramentaRepository {
             
             while(rs.next()){
                 Ferramenta tool = new Ferramenta();
-                tool.setId(rs.getInt("id"));
+                tool.setId(rs.getLong("id"));
                 tool.setNome(rs.getString("nome"));
                 tool.setHorasDeUso(rs.getInt("horas_uso"));
                 tool.setVidaUtilMaxima(rs.getInt("vida_util"));
@@ -96,7 +96,7 @@ public class FerramentaRepository {
                 stmt.setString(1, ferramenta.getNome());
                 stmt.setInt(2, ferramenta.getHorasDeUso());
                 stmt.setInt(3, ferramenta.getVidaUtilMaxima());
-                stmt.setInt(4, ferramenta.getId());
+                stmt.setLong(4, ferramenta.getId());
                 
                 
                  linhas = stmt.executeUpdate();
@@ -119,7 +119,7 @@ public class FerramentaRepository {
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
             ferramenta = new Ferramenta();
-            ferramenta.setId(rs.getInt("id"));
+            ferramenta.setId(rs.getLong("id"));
             ferramenta.setNome(rs.getString("nome"));
             ferramenta.setHorasDeUso(rs.getInt("horas_uso"));
             ferramenta.setVidaUtilMaxima(rs.getInt("vida_util"));
